@@ -99,9 +99,9 @@ COMMUNITY="<snmp password>"         # SNMP password
   * config.sh should be executable
   * oid.list should be readable
 
-* you may also need to modify the permissions of both the script and config.sh to be owned by the telegraf user:group - i.e. `sudo chown telegraf:telegraf TIP-QNAP-resource-usage-snmp.sh | sudo chown telegraf:telegraf config.sh`
+* you may also need to modify the ownership of both the script and config.sh to be owned by the telegraf user:group - i.e. `sudo chown telegraf:telegraf TIP-QNAP-resource-usage-snmp.sh | sudo chown telegraf:telegraf config.sh`
 
-* you may also need to modify the permissions of the directory the script and config.sh are stored to be  - i.e. `sudo chmod 774 /usr/local/bin/TIP-QNAP-resource-usage-snmp`
+* you may also need to modify the permissions of the directory the script and config.sh are stored to be owned by the telegraf user:group and set the read/write/execute permissions accordingly - i.e. `sudo chmod 774 /usr/local/bin/TIP-QNAP-resource-usage-snmp | sudo chown telegraf:telegraf TIP-QNAP-resource-usage-snmp`
 
 * add the following to your telegraf.conf
 
