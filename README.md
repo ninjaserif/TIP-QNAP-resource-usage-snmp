@@ -101,7 +101,7 @@ COMMUNITY="<snmp password>"         # SNMP password
 
 * you may also need to modify the ownership of both the script and config.sh to be owned by the telegraf user:group - i.e. `sudo chown telegraf:telegraf TIP-QNAP-resource-usage-snmp.sh | sudo chown telegraf:telegraf config.sh`
 
-* you may also need to modify the permissions of the directory the script and config.sh are stored to be owned by the telegraf user:group and set the read/write/execute permissions accordingly - i.e. `sudo chmod 774 /usr/local/bin/TIP-QNAP-resource-usage-snmp | sudo chown telegraf:telegraf TIP-QNAP-resource-usage-snmp`
+* you may also need to modify the permissions of the directory the script and config.sh are stored to be owned by the telegraf user:group and set the read/write/execute permissions accordingly - i.e. `sudo chown telegraf:telegraf TIP-QNAP-resource-usage-snmp | sudo chmod 774 /usr/local/bin/TIP-QNAP-resource-usage-snmp`
 
 * add the following to your telegraf.conf
 
@@ -121,5 +121,7 @@ COMMUNITY="<snmp password>"         # SNMP password
 * 1.0.0 27-09-2020
   * cleaned up for git - set to version 1.0.0
   * use config and location for reference
+* 1.0.1 27-09-2020
+  * updated README instructions to include setting folder permissions following first deployment / test
 
 ## -END-
