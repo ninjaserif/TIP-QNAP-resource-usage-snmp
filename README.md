@@ -123,5 +123,6 @@ COMMUNITY="<snmp password>"         # SNMP password
   * use config and location for reference
 * 1.0.1 27-09-2020
   * updated README instructions to include setting folder permissions following first deployment / test
+  * fixed oid.list spelling mistake
 
 ## -END-
