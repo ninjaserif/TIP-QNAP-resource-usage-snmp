@@ -1,6 +1,6 @@
 # TIP-QNAP-resource-usage-snmp
 
-Telegraf Input Plugin (TIP) to collect resource usage of a QNAP NAS via SNMP.  My use case was to create this script to collect resource usage data of my QNAP NAS to be stored in InfluxDB - visualized in Grafana.  The script could be used for other uses if you just need the json.
+Telegraf Input Plugin (TIP) to collect resource usage of a QNAP NAS via SNMP.  My use case was to create this script to collect resource usage data of my QNAP NAS to be stored in InfluxDB - visualized in Grafana.  The script could be used for other uses if you just need the json output.
 
 I used a snmpwalk application to gather the "oid" (Object Identifier) for the snmp values I was interested in tracking.
 
@@ -27,10 +27,10 @@ The script returns the below output:
 
 ## Features
 
-* SNMP is used to collect the 
+* SNMP is used to gather the resource usage of a QNAP NAS.
 * Output results to json for consumption by Telegraf
-* I have limited the result to the condition elements which I was interested in tracking.  Also, I have a 4 bay NAS, hence I wanted to track all 4 drives, but if you have more or less drives, you can update oid.list as appropriate.  Additional SNMP elements could be added/removed to the oid.list file.
-* Weather conditions include:
+* I have limited the result to the condition elements which I was interested in tracking.  Also, I have a 4 bay NAS hence I wanted to track all 4 drives, but if you have more or less drives, you can update oid.list as appropriate.  Additional SNMP elements could also be added/removed to the oid.list file.
+* QNAP resource usage include:
   * CPU Usage (percentage)
   * Total Memory (megabytes)
   * Free Memory (megabytes)
@@ -41,7 +41,7 @@ The script returns the below output:
   * HDD 2 Temperature (degrees C)
   * HDD 3 Temperature (degrees C)
   * HDD 4 Temperature (degrees C)
-  * System Fan Speed (revolutions per minute RPM)
+  * System Fan Speed (speed RPM)
   * System Volume Total Size (terabytes *see ^note 1)
   * System Volume Free Sizes (gigabytes *see ^note 1)
 * tested / works on various releases of Rasbian as well as Ubuntu
@@ -80,7 +80,7 @@ sudo mkdir /usr/local/bin/TIP-QNAP-resource-usage-snmp && sudo tar -xvzf TIP-QNA
 cp config-sample.sh config.sh
 ```
 
-* visit your QNAP web interface and log in.  Once logged in open the "Control Panel" > navigate to "Network & File Services" > "SNMP".  Ensure "Enable SNMP service" is enabled.  My configuration was as follows:
+* visit your QNAP web interface and log in.  Once logged in open the "Control Panel" > navigate to "Network & File Services" > "SNMP".  Ensure "Enable SNMP service" is ticked.  My QNAP SNMP configuration was as follows:
   * Port number = 161
   * SNMP trap level = nothing ticked/enabled
   * SNMP version = SNMP V1/V2
@@ -94,7 +94,7 @@ HOST_NAME="<server name>"           # your QNAP name
 COMMUNITY="<snmp password>"         # SNMP password
 ```
 
-* confirm scripts have execute permissions
+* confirm scripts have the following permissions:
   * TIP-QNAP-resource-usage-snmp.sh should be executable
   * config.sh should be executable
   * oid.list should be readable
